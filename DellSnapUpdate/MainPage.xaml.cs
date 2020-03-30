@@ -15,8 +15,8 @@ namespace DellSnapUpdate
         public MainPage()
         {
             this.InitializeComponent();
-            string appName = Windows.ApplicationModel.Package.Current.DisplayName;
-            AppTitle.Text = appName;
+            //string appName = Windows.ApplicationModel.Package.Current.DisplayName;
+            //AppTitle.Text = appName;
         }
 
         private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -41,11 +41,11 @@ namespace DellSnapUpdate
                         ContentFrame.Navigate(typeof(AboutPage));
                         break;
                     case "Update":
-                        NavView.Header = "About Snap Update...";
+                        NavView.Header = "Update through Snap Update...";
                         ContentFrame.Navigate(typeof(UpdatePage));
                         break;
                     case "Configure":
-                        NavView.Header = "About Snap Update...";
+                        NavView.Header = "Configure Snap Update...";
                         ContentFrame.Navigate(typeof(ConfigurePage));
                         break;
 

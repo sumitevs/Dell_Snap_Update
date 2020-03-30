@@ -14,10 +14,22 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <TextBlock Text="{x:Bind homeViewModel.SystemInfo.ModelName,Mode=OneWay}"/>
-            <TextBlock Text="{x:Bind homeViewModel.SystemInfo.ServiceTag,Mode=OneWay}"/>
-            <TextBlock Text="{x:Bind homeViewModel.SystemInfo.LastCheck,Mode=OneWay}"/>
+        <StackPanel Style="{StaticResource outterHomePageStack}" >
+            <TextBlock Text="{x:Bind homeViewModel.SystemInfo.ModelName,Mode=OneWay}" Style="{StaticResource modelNameTextBox}"/>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <TextBlock Text="Serive Tag" 
+                               Style="{StaticResource headerTextBox}" />
+                    <TextBlock Text="{x:Bind homeViewModel.SystemInfo.ServiceTag,Mode=OneWay}" 
+                               Style="{StaticResource detailsTextBox}"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <TextBlock Text="Last Checked on"  
+                               Style="{StaticResource headerTextBox}"/>
+                    <TextBlock Text="{x:Bind homeViewModel.SystemInfo.LastCheck,Mode=OneWay}"  
+                               Style="{StaticResource detailsTextBox}"/>
+                </StackPanel>
+            </StackPanel>            
         </StackPanel>
 
         <Grid Grid.Column="1">

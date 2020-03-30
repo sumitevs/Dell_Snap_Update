@@ -72,7 +72,7 @@ namespace DellSnapUpdate
                     // parameter
                     rootFrame.Navigate(typeof(MainPage), e.Arguments);
                     //to make default selection
-                    //((Microsoft.UI.Xaml.Controls.NavigationViewItem)(((NavigationRootPage)(Window.Current.Content)).NavigationView.MenuItems[0])).IsSelected = true;
+                    //((Microsoft.UI.Xaml.Controls.NavigationViewItem)((NavigationRootPage)(Window.Current.Content)).NavigationView.MenuItems[0]).IsSelected = true;
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

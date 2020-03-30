@@ -1,0 +1,17 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DellSnapUpdate.Resources">
+    <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="#007db8"/>
+    <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="#007db8" />
+
+    <!--<ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush x:Key="navBackground" Color="#222222"/>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="navBackground" Color="#007db8"/>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>-->
+
+</ResourceDictionary>

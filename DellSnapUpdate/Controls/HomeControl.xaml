@@ -15,10 +15,16 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
             <TextBlock Text="{x:Bind homeViewModel.SystemInfo.ModelName,Mode=OneWay}"/>
-            <TextBlock Text="{x:Bind homeViewModel.SystemInfo.ServiceTag,Mode=OneWay}"/>
-            <TextBlock Text="{x:Bind homeViewModel.SystemInfo.LastCheck,Mode=OneWay}"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Serive Tag"/>
+                <TextBlock Text="{x:Bind homeViewModel.SystemInfo.ServiceTag,Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Serive Tag"/>
+                <TextBlock Text="{x:Bind homeViewModel.SystemInfo.LastCheck,Mode=OneWay}"/>
+            </StackPanel>            
         </StackPanel>
 
         <Grid Grid.Column="1">
