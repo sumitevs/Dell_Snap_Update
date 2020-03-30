@@ -29,6 +29,9 @@
             </Frame>
         </NavigationView>
 
-        <TextBlock x:Name="AppTitle" Style="{StaticResource CaptionTextBlockStyle}" Margin="12,8"/>
+        <TextBlock x:Name="AppTitle"
+                   Style="{StaticResource CaptionTextBlockStyle}" 
+                   Margin="12,8"
+                   VerticalAlignment="Top" />
     </Grid>
 </Page>
