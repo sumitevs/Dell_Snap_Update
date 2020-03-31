@@ -1,6 +1,7 @@
 ﻿using DellSnapUpdate.ControlPages;
 using DellSnapUpdate.Controls;
 using System;
+using System.Linq;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -15,8 +16,8 @@ namespace DellSnapUpdate
         public MainPage()
         {
             this.InitializeComponent();
-            //string appName = Windows.ApplicationModel.Package.Current.DisplayName;
-            //AppTitle.Text = appName;
+            //Setting default selection to Navigation
+            NavView.SelectedItem = NavView.MenuItems.ElementAt(0);
         }
 
         private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
