@@ -146,6 +146,7 @@
     <Compile Include="DataProvider\IUpdateInfoProvider.cs" />
     <Compile Include="DataProvider\SystemInfoProvider.cs" />
     <Compile Include="DataProvider\UpdateInfoProvider.cs" />
+    <Compile Include="Formatters\StringFormatConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -258,6 +259,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\FluentXamlThemeExport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Formatters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,9 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DellSnapUpdate.Resources"
+    xmlns:format="using:DellSnapUpdate.Formatters">
+
+    <format:StringFormatConverter x:Key="SizeStringFormatConverter" StringFormat=" {0} MB "/>
+    
+</ResourceDictionary>
