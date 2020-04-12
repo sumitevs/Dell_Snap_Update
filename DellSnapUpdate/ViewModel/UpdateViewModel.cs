@@ -29,9 +29,13 @@ namespace DellSnapUpdate.ViewModel
         //Triggers on Create, Delete and Modify
         public async Task ConfigureFolderListener(ListenerEventHandler listenerEventHandler)
         {
+            var userDataPath = UserDataPaths.GetDefault();
+            var desktopPath = userDataPath.Desktop;
+            var folderPath = desktopPath + @"\IC";
+
             //Add capability "broadFileSystemAccess" in Package.appxmanifest  
             //In Settings -> Privacy -> File System grant access to this App
-            var storageFolder = await StorageFolder.GetFolderFromPathAsync(@"C:\Users\Debopriya_Bhattachar\Desktop\ic\IC");
+            var storageFolder = await StorageFolder.GetFolderFromPathAsync(folderPath);
             var supportedExtension = new List<string> { ".xml" };
             QueryOptions option = new QueryOptions(CommonFileQuery.DefaultQuery, supportedExtension);
             option.FolderDepth = FolderDepth.Shallow;

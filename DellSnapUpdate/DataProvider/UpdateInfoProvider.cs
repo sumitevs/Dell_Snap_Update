@@ -28,7 +28,11 @@ namespace DellSnapUpdate.DataProvider
                 client.BaseAddress = new Uri("http://137.117.96.234/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var storageFolder = await StorageFolder.GetFolderFromPathAsync(@"C:\Users\Debopriya_Bhattachar\Desktop\ic\IC");
+                var userDataPath = UserDataPaths.GetDefault();
+                var desktopPath = userDataPath.Desktop;
+                var folderPath = desktopPath + @"\IC";
+
+                var storageFolder = await StorageFolder.GetFolderFromPathAsync(folderPath);
                 var file = await storageFolder.GetFileAsync("Inventory.xml");
 
                 //Reading the xml from the file stream
