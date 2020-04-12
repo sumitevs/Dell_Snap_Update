@@ -17,17 +17,21 @@ namespace DellSnapUpdate.DataProvider
 {
     public class UpdateInfoProvider : IUpdateInfoProvider
     {
+        //Getting the Inventory.xml and giving it as an input
+        //to the API, getting back the list of updates
         public async Task<List<UpdateInfo>> GetSwbUpdatesAsync()
         {
             List<UpdateInfo> updatesInfoList = null;
             using (var client = new HttpClient())
             {
+                //IP of the azure VM in cloud
                 client.BaseAddress = new Uri("http://137.117.96.234/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var storageFolder = await StorageFolder.GetFolderFromPathAsync(@"C:\Users\Debopriya_Bhattachar\Desktop\ic\IC");
                 var file = await storageFolder.GetFileAsync("Inventory.xml");
 
+                //Reading the xml from the file stream
                 XmlDocument icReport = new XmlDocument();
                 using (Stream fileStream = await file.OpenStreamForReadAsync())
                 {
@@ -37,6 +41,7 @@ namespace DellSnapUpdate.DataProvider
                 XMLUpload xmlUpload = new XMLUpload();
                 xmlUpload.FileData = Encoding.Default.GetBytes(icReport.OuterXml);
 
+                //Getting the bios Id/system Id from the IC
                 var system = icReport.SelectSingleNode("/SVMInventory/System");
                 var systemID = system.Attributes["systemID"].Value;
 

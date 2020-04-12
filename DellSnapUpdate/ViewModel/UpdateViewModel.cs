@@ -25,6 +25,8 @@ namespace DellSnapUpdate.ViewModel
             }
         }
 
+        //Adding Folder Listener for xml files
+        //Triggers on Create, Delete and Modify
         public async Task ConfigureFolderListener(ListenerEventHandler listenerEventHandler)
         {
             //Add capability "broadFileSystemAccess" in Package.appxmanifest  
@@ -35,6 +37,8 @@ namespace DellSnapUpdate.ViewModel
             option.FolderDepth = FolderDepth.Shallow;
             option.IndexerOption = IndexerOption.UseIndexerWhenAvailable;
             StorageFileQueryResult resultSet = storageFolder.CreateFileQueryWithOptions(option);
+
+            //Event only fires after GetFilesAsync has been called atleast once
             await resultSet.GetFilesAsync(0, 1);
             resultSet.ContentsChanged += new TypedEventHandler<IStorageQueryResultBase, object>(listenerEventHandler);
         }

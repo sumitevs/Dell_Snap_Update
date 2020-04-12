@@ -31,9 +31,9 @@ namespace DellSnapUpdate.ControlPages
     public sealed partial class UpdatePage : Page
     {
         public UpdateViewModel ViewModel { get; set; }
-
+        //Core Dispatcher for getting the UI thread
         private static CoreDispatcher _coreDispatcher;
-
+        //Delegating the Contents Changed event handler for the folder listener
         public delegate void ListenerEventHandler(IStorageQueryResultBase sender, object args);
 
         public UpdatePage()
@@ -53,6 +53,7 @@ namespace DellSnapUpdate.ControlPages
 
         }
 
+        //Triggered when we hit the Scan Button on the Update Page
         private async void ButtonScan_Click(object sender, RoutedEventArgs e)
         {
             //Launching exe to generate IC Report
@@ -63,6 +64,7 @@ namespace DellSnapUpdate.ControlPages
             scanStack.Visibility = Visibility.Collapsed;
         }
 
+        //Triggerred when we hit the Update Button after selecting the updates
         private void ButtonUpdate_Click(object sender, RoutedEventArgs e)
         {
             var updateInfos = driverList.ViewModel.UpdateInfos;
@@ -75,6 +77,7 @@ namespace DellSnapUpdate.ControlPages
             await driverList.ViewModel.LoadAsync();
 
             //CoreDispatcher for running in UI thread
+            //Properties touching the UI should be updated with the UI thread
             await _coreDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 ViewModel.IsLoading = false;

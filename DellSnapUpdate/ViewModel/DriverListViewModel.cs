@@ -16,6 +16,7 @@ namespace DellSnapUpdate.ViewModel
         private IUpdateInfoProvider _updateInfoProvider;
         public ObservableCollection<UpdateInfo> UpdateInfos { get; }
 
+        //Core Dispatcher for running certain code in UI thread
         private static CoreDispatcher _coreDispatcher;
 
         public DriverListViewModel(IUpdateInfoProvider updateDataProvider)
@@ -25,6 +26,7 @@ namespace DellSnapUpdate.ViewModel
             _coreDispatcher = Window.Current.Dispatcher;
         }
 
+        //Get the Updates with API call and update UpdateInfos
         public async Task LoadAsync()
         {
 
