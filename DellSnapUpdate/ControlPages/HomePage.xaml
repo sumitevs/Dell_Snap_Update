@@ -15,6 +15,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Style="{StaticResource outterHomePageStack}" >
+            <Image Source="../Images/laptop.png"/>
             <TextBlock Text="{x:Bind homeViewModel.SystemInfo.ModelName,Mode=OneWay}" Style="{StaticResource modelNameTextBox}"/>
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center">

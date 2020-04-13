@@ -3,14 +3,42 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:DellSnapUpdate.ControlPages"
+    xmlns:model="using:DellSnapUpdate.Model"
+    xmlns:controls="using:DellSnapUpdate.ControlPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    x:Name="updatePage">
 
     <Grid>
-        <TextBlock>
-            Lets update here
-        </TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Visibility="Visible" x:Name="scanStack">
+                <TextBlock Text="To Scan your System and see available updates"
+                       TextWrapping="WrapWholeWords" Style="{StaticResource detailsTextBox}"
+                       TextAlignment="DetectFromContent"  Width="Auto" />
+                <Button Content="Scan" Width="70" Margin="0 0 0 70" HorizontalAlignment="Right"
+                    Background="{StaticResource NavigationViewExpandedPaneBackground}"
+                    Click="ButtonScan_Click" Foreground="White"/>
+            </StackPanel>
+            <TextBlock Text="Updates Loading Please Wait..." x:Name="loadingText" Visibility="Collapsed"
+                       TextWrapping="WrapWholeWords" Style="{StaticResource detailsTextBox}"
+                       TextAlignment="DetectFromContent"  Width="Auto" />
+            <ProgressRing x:Name="loadingRing" IsActive="{x:Bind ViewModel.IsLoading, Mode=OneWay}"/>
+            <StackPanel Visibility="Collapsed" x:Name="updateStack">
+                <TextBlock Text="To apply selected updates to your system"
+                       TextWrapping="WrapWholeWords" Style="{StaticResource detailsTextBox}"
+                       TextAlignment="DetectFromContent"  Width="Auto" />
+                <Button Content="Update" Width="70" HorizontalAlignment="Right"
+                        Background="{StaticResource NavigationViewExpandedPaneBackground}"
+                        Click="ButtonUpdate_Click" Foreground="White"/>
+            </StackPanel>
+        </StackPanel>
+        <controls:UpdatePageDriverList x:Name="driverList" Grid.Column="1" Visibility="Collapsed"/>
+
     </Grid>
 </Page>
