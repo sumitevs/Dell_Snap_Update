@@ -33,25 +33,19 @@ namespace DellSnapUpdate.DataProvider
                 var folderPath = desktopPath + @"\IC";
 
                 var storageFolder = await StorageFolder.GetFolderFromPathAsync(folderPath);
-                var file = await storageFolder.GetFileAsync("Inventory.xml");
+                var file = await storageFolder.GetFileAsync("ICJson.json");
 
                 //Reading the xml from the file stream
-                XmlDocument icReport = new XmlDocument();
+                string icReport;
                 using (Stream fileStream = await file.OpenStreamForReadAsync())
                 {
-                    icReport.Load(fileStream);
+                    StreamReader streamReader = new StreamReader(fileStream);
+                    icReport = await streamReader.ReadToEndAsync();
                 }
-
-                XMLUpload xmlUpload = new XMLUpload();
-                xmlUpload.FileData = Encoding.Default.GetBytes(icReport.OuterXml);
-
-                //Getting the bios Id/system Id from the IC
-                var system = icReport.SelectSingleNode("/SVMInventory/System");
-                var systemID = system.Attributes["systemID"].Value;
 
                 //Enabling SSL on the API might not work and throw invalid certificate error
                 //Exception: "The certificate authority is invalid or incorrect"
-                var response = await client.PostAsJsonAsync("api/PlatformInfo/SwbUpdates/" + systemID, xmlUpload);
+                var response = await client.PostAsJsonAsync("api/PlatformInfo/SwbUpdatesJSON", icReport);
 
                 if (response.IsSuccessStatusCode)
                 {
